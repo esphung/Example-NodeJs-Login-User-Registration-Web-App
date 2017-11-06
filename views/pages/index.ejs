@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+		<%= title %>
+		
+		</title>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	</head>
+	<div class="container">
+		<ul class="list-group">
+			<li class="list-group-item">
+				<span>POST <small>https://whispering-beach-15540.herokuapp.com/users/?handle=</small><mark>username</mark>
+				</span></li>
+			<li class="list-group-item">
+				<span>GET <small>https://whispering-beach-15540.herokuapp.com/users/?handle=</small><mark>username</mark></span></li>
+				
+			<li class="list-group-item">
+				<span>DELETE <small>https://whispering-beach-15540.herokuapp.com/users/?handle=</small><mark>username</mark></span></li>
+					
+		</ul>
+	</div>
+
+
+<div class="container">
+	<table class="table table-sm">
+		<thead>
+
+		<% for(var i = 0; i < users.length; i++) { if (i < 1) {%>
+			<tr>	
+				<th>username</th>
+				<th>plug_id</th>
+				<th>image</th>
+			</tr>
+			<% } %>
+
+		</thead>
+		<tbody>
+			<tr>
+				<td><%= users[i].handle %></td>
+				<td><%= users[i].plug_id %></td>
+				<td><img src='<%= users[i].image_url %>' alt='...' class='img-thumbnail'></td>
+				
+			</tr>
+			<% } %>
+		</tbody>
+	</table>
+</div>
+
+			
+
+
+</html>

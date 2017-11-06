@@ -1,0 +1,46 @@
+<div class="container">
+	<table class="table table-sm">
+		<thead>
+
+		<% for(var i = 0; i < users.length; i++) { if (i < 1) {%>
+			<tr>	
+				<th>id</th>
+				<th>username</th>
+				<th>created</th>
+				<th>email</th>
+				<th>fname</th>
+				<th>lname</th>
+				<th>plug_id</th>
+				<th>city</th>
+				<th>latitude</th>
+				<th>longitude</th>
+				<th>image</th>
+				<th>phone</th>
+				<th>company</th>
+				<th>plugs</th>
+			</tr>
+			<% } %>
+
+		</thead>
+		<tbody>
+			<tr>
+				<td><%= users[i].id %></td>
+				<td><%= users[i].handle %></td>
+				<td><%= users[i].created %></td>
+				<td><%= users[i].email %></td>
+				<td><%= users[i].fname %></td>
+				<td><%= users[i].lname %></td>
+				<td><%= users[i].plug_id %></td>
+				<td><%= users[i].city %></td>
+				<td><%= users[i].latitude %></td>
+				<td><%= users[i].longitude %></td>
+				<td><img src='<%= users[i].image %>' alt='...' class='img-thumbnail'></td>
+				<td><%= users[i].phone %></td>
+				<td><%= users[i].company %></td>
+				<td><%= users[i].plugs %></td>
+				
+			</tr>
+			<% } %>
+		</tbody>
+	</table>
+</div>

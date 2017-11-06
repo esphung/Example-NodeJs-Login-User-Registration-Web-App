@@ -1,0 +1,325 @@
+{
+  "users": [
+    {
+      "email": null,
+      "fname": "Yorgos",
+      "handle": "yausten0",
+      "id": 1,
+      "image_url": "http://dummyimage.com/100x100.png/5fa2dd/ffffff",
+      "lname": "Austen",
+      "phone": "3699685714",
+      "plug_id": 18,
+      "plugs": [
+        {}
+      ]
+    },
+    {
+      "email": null,
+      "fname": "Ryan",
+      "handle": "randreutti1",
+      "id": 2,
+      "image_url": null,
+      "lname": "Andreutti",
+      "phone": null,
+      "plug_id": 10,
+      "plugs": null
+    },
+    {
+      "email": null,
+      "fname": "Link",
+      "handle": "lbissett2",
+      "id": 3,
+      "image_url": "http://dummyimage.com/100x100.png/ff4444/ffffff",
+      "lname": "Bissett",
+      "phone": "4265940594",
+      "plug_id": 64,
+      "plugs": [
+        {}
+      ]
+    },
+    {
+      "email": null,
+      "fname": "Lily",
+      "handle": "lsarch3",
+      "id": 4,
+      "image_url": "http://dummyimage.com/100x100.bmp/cc0000/ffffff",
+      "lname": "Sarch",
+      "phone": "1897790182",
+      "plug_id": 90,
+      "plugs": null
+    },
+    {
+      "email": "lghioni4@lulu.com",
+      "fname": "Lanna",
+      "handle": "lghioni4",
+      "id": 5,
+      "image_url": "http://dummyimage.com/100x100.png/ff4444/ffffff",
+      "lname": "Ghioni",
+      "phone": "6515468170",
+      "plug_id": 76,
+      "plugs": null
+    },
+    {
+      "email": null,
+      "fname": "Sarah",
+      "handle": "ssiaspinski5",
+      "id": 6,
+      "image_url": "http://dummyimage.com/100x100.jpg/5fa2dd/ffffff",
+      "lname": "Siaspinski",
+      "phone": "9322442476",
+      "plug_id": 24,
+      "plugs": [
+        {}
+      ]
+    },
+    {
+      "email": null,
+      "fname": "Clotilda",
+      "handle": "ckupka6",
+      "id": 7,
+      "image_url": "http://dummyimage.com/100x100.jpg/dddddd/000000",
+      "lname": "Kupka",
+      "phone": "6076982641",
+      "plug_id": 40,
+      "plugs": [
+        {},
+        {}
+      ]
+    },
+    {
+      "email": "jgolly7@smugmug.com",
+      "fname": "Jesus",
+      "handle": "jgolly7",
+      "id": 8,
+      "image_url": "http://dummyimage.com/100x100.png/cc0000/ffffff",
+      "lname": "Golly",
+      "phone": "8027499279",
+      "plug_id": 1,
+      "plugs": [
+        {},
+        {}
+      ]
+    },
+    {
+      "email": "mledwith8@indiatimes.com",
+      "fname": "Maurise",
+      "handle": "mledwith8",
+      "id": 9,
+      "image_url": "http://dummyimage.com/100x100.jpg/cc0000/ffffff",
+      "lname": "Ledwith",
+      "phone": "2528605176",
+      "plug_id": 23,
+      "plugs": null
+    },
+    {
+      "email": null,
+      "fname": "Ramona",
+      "handle": "rbaum9",
+      "id": 10,
+      "image_url": "http://dummyimage.com/100x100.bmp/cc0000/ffffff",
+      "lname": "Baum",
+      "phone": "2143749995",
+      "plug_id": 23,
+      "plugs": null
+    },
+    {
+      "email": null,
+      "fname": "Ranique",
+      "handle": "raugustusa",
+      "id": 11,
+      "image_url": "http://dummyimage.com/100x100.jpg/5fa2dd/ffffff",
+      "lname": "Augustus",
+      "phone": "8507697349",
+      "plug_id": 57,
+      "plugs": null
+    },
+    {
+      "email": null,
+      "fname": "Benedetta",
+      "handle": "bparsonsonb",
+      "id": 12,
+      "image_url": null,
+      "lname": "Parsonson",
+      "phone": null,
+      "plug_id": 61,
+      "plugs": null
+    },
+    {
+      "email": null,
+      "fname": "Rosabel",
+      "handle": "rudeyc",
+      "id": 13,
+      "image_url": "http://dummyimage.com/100x100.png/5fa2dd/ffffff",
+      "lname": "Udey",
+      "phone": "2129790419",
+      "plug_id": 86,
+      "plugs": [
+        {},
+        {}
+      ]
+    },
+    {
+      "email": null,
+      "fname": "Walliw",
+      "handle": "wguinaned",
+      "id": 14,
+      "image_url": "http://dummyimage.com/100x100.bmp/dddddd/000000",
+      "lname": "Guinane",
+      "phone": "2827615460",
+      "plug_id": 13,
+      "plugs": null
+    },
+    {
+      "email": null,
+      "fname": "Caprice",
+      "handle": "cbrockbanke",
+      "id": 15,
+      "image_url": null,
+      "lname": "Brockbank",
+      "phone": null,
+      "plug_id": 71,
+      "plugs": null
+    },
+    {
+      "email": "ndemangef@mashable.com",
+      "fname": "Nessi",
+      "handle": "ndemangef",
+      "id": 16,
+      "image_url": null,
+      "lname": "Demange",
+      "phone": null,
+      "plug_id": 71,
+      "plugs": [
+        {}
+      ]
+    },
+    {
+      "email": null,
+      "fname": "Yolanthe",
+      "handle": "ybellyg",
+      "id": 17,
+      "image_url": "http://dummyimage.com/100x100.jpg/5fa2dd/ffffff",
+      "lname": "Belly",
+      "phone": "7173981952",
+      "plug_id": 100,
+      "plugs": [
+        {}
+      ]
+    },
+    {
+      "email": "mmckeachieh@icq.com",
+      "fname": "Mayor",
+      "handle": "mmckeachieh",
+      "id": 18,
+      "image_url": null,
+      "lname": "McKeachie",
+      "phone": null,
+      "plug_id": 17,
+      "plugs": [
+        {},
+        {}
+      ]
+    },
+    {
+      "email": "arickfordi@1und1.de",
+      "fname": "Aubrette",
+      "handle": "arickfordi",
+      "id": 19,
+      "image_url": null,
+      "lname": "Rickford",
+      "phone": null,
+      "plug_id": 41,
+      "plugs": null
+    },
+    {
+      "email": "tbarrickj@amazon.co.uk",
+      "fname": "Tansy",
+      "handle": "tbarrickj",
+      "id": 20,
+      "image_url": "http://dummyimage.com/100x100.png/dddddd/000000",
+      "lname": "Barrick",
+      "phone": "5205220096",
+      "plug_id": 38,
+      "plugs": null
+    },
+    {
+      "email": null,
+      "fname": "Desmond",
+      "handle": "dmonank",
+      "id": 21,
+      "image_url": "http://dummyimage.com/100x100.bmp/ff4444/ffffff",
+      "lname": "Monan",
+      "phone": "7764178853",
+      "plug_id": 82,
+      "plugs": null
+    },
+    {
+      "email": null,
+      "fname": "Bernita",
+      "handle": "bpetruskevichl",
+      "id": 22,
+      "image_url": "http://dummyimage.com/100x100.jpg/ff4444/ffffff",
+      "lname": "Petruskevich",
+      "phone": "2783739996",
+      "plug_id": 28,
+      "plugs": null
+    },
+    {
+      "email": "asimmersm@ameblo.jp",
+      "fname": "Ann-marie",
+      "handle": "asimmersm",
+      "id": 23,
+      "image_url": "http://dummyimage.com/100x100.bmp/5fa2dd/ffffff",
+      "lname": "Simmers",
+      "phone": "2278833572",
+      "plug_id": 97,
+      "plugs": null
+    },
+    {
+      "email": "zlanninn@cbslocal.com",
+      "fname": "Zuzana",
+      "handle": "zlanninn",
+      "id": 24,
+      "image_url": "http://dummyimage.com/100x100.bmp/5fa2dd/ffffff",
+      "lname": "Lannin",
+      "phone": "7151967601",
+      "plug_id": 66,
+      "plugs": [
+        {},
+        {}
+      ]
+    },
+    {
+      "email": null,
+      "fname": "Burty",
+      "handle": "bhaythornthwaiteo",
+      "id": 25,
+      "image_url": null,
+      "lname": "Haythornthwaite",
+      "phone": null,
+      "plug_id": 42,
+      "plugs": [
+        {},
+        {}
+      ]
+    },
+    {
+      "email": null,
+      "fname": "Pamella",
+      "handle": "pboatmanp",
+      "id": 26,
+      "image_url": "http://dummyimage.com/100x100.jpg/dddddd/000000",
+      "lname": "Boatman",
+      "phone": "1538839520",
+      "plug_id": 10,
+      "plugs": [
+        {},
+        {}
+      ]
+    },
+    {
+      "id": 27,
+      "handle": "james"
+    }
+  ]
+}

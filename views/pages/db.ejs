@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  	<title><%= title %></title>
+
+  <% include ../partials/header.ejs %>
+
+</head>
+
+<body>
+
+<table class="table" style="width:100%">
+
+	<% for(var i = 0; i < users.length; i++) { %>
+	<thead>
+		<% if (i < 1) {%>
+		<tr>
+			
+			<th>id</th>
+			<th>handle</th>
+
+		</tr>
+		<% } %>
+	</thead>
+
+	<tbody>
+
+   <tr>
+     <td><%= users[i].id %></td>
+     <td><%= users[i].handle %></td>
+   </tr>
+<% } %>
+	</tbody>
+</table>
+
+</body>
+</html>
