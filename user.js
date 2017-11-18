@@ -14,27 +14,25 @@ const db = low(adapter)
 
 
 class User {
-	constructor(user_id, username, phone, contacts, image_url) {
+	constructor(user_id, email, username, phone, contact_ids, image_url) {
 		this.user_id = user_id
+		this.email = email
 		this.username = username
-		if (phone != null && (phone.length == 10)) {
+		if ((phone != null) && (phone.length == 10)) {
 			this.phone = phone
 		} else {
-			this.phone = 0
+			this.phone = ""
 		}
-		if (contacts != null) {
-			this.contacts = contacts
+		if (contact_ids != null) {
+			this.contact_ids = contact_ids
 		} else {
-			this.contacts = []
+			this.contact_ids = []
 		}
 		if (image_url != null){
 			this.image_url = image_url
 		} else {
 			this.image_url = ""
 		}
-
-		//console.log("Created New User Class Object")
-		//console.log(this);
 	}// end constructor
 
 }// end class def

@@ -6,7 +6,7 @@
       "user_id": 1,
       "image_url": "http://dummyimage.com/100x100.png/5fa2dd/ffffff",
       "phone": "3699685714",
-      "contacts": [
+      "contact_ids": [
         2,
         5,
         3
@@ -18,7 +18,7 @@
       "user_id": 2,
       "image_url": null,
       "phone": null,
-      "contacts": [
+      "contact_ids": [
         4,
         2,
         6,
@@ -31,7 +31,7 @@
       "user_id": 3,
       "image_url": "http://dummyimage.com/100x100.png/ff4444/ffffff",
       "phone": "4265940594",
-      "contacts": [
+      "contact_ids": [
         6,
         5,
         9
@@ -43,7 +43,7 @@
       "user_id": 4,
       "image_url": "http://dummyimage.com/100x100.bmp/cc0000/ffffff",
       "phone": "1897790182",
-      "contacts": [
+      "contact_ids": [
         1,
         2,
         3,
@@ -58,7 +58,7 @@
       "user_id": 5,
       "image_url": "http://dummyimage.com/100x100.png/ff4444/ffffff",
       "phone": "6515468170",
-      "contacts": [
+      "contact_ids": [
         2,
         2,
         5,
@@ -71,7 +71,7 @@
       "user_id": 6,
       "image_url": "http://dummyimage.com/100x100.jpg/5fa2dd/ffffff",
       "phone": "9322442476",
-      "contacts": [
+      "contact_ids": [
         1,
         2,
         3,
@@ -87,7 +87,7 @@
       "user_id": 7,
       "image_url": "http://dummyimage.com/100x100.jpg/dddddd/000000",
       "phone": "6076982641",
-      "contacts": [
+      "contact_ids": [
         1,
         2,
         3,
@@ -103,7 +103,7 @@
       "user_id": 8,
       "image_url": "http://dummyimage.com/100x100.png/cc0000/ffffff",
       "phone": "8027499279",
-      "contacts": [
+      "contact_ids": [
         1,
         2,
         3,
@@ -119,7 +119,7 @@
       "user_id": 9,
       "image_url": "http://dummyimage.com/100x100.jpg/cc0000/ffffff",
       "phone": "2528605176",
-      "contacts": []
+      "contact_ids": []
     },
     {
       "email": null,
@@ -127,7 +127,7 @@
       "user_id": 10,
       "image_url": "http://dummyimage.com/100x100.bmp/cc0000/ffffff",
       "phone": "2143749995",
-      "contacts": []
+      "contact_ids": []
     },
     {
       "email": null,
@@ -135,23 +135,15 @@
       "user_id": 11,
       "image_url": "http://dummyimage.com/100x100.jpg/5fa2dd/ffffff",
       "phone": "8507697349",
-      "contacts": []
-    },
-    {
-      "email": null,
-      "username": "bparsonsonb",
-      "user_id": 12,
-      "image_url": null,
-      "phone": null,
-      "contacts": []
+      "contact_ids": []
     },
     {
       "email": null,
       "username": "wguinaned",
-      "user_id": 14,
+      "user_id": 12,
       "image_url": "http://dummyimage.com/100x100.bmp/dddddd/000000",
       "phone": "2827615460",
-      "contacts": []
+      "contact_ids": []
     },
     {
       "email": null,
@@ -159,7 +151,7 @@
       "user_id": 15,
       "image_url": null,
       "phone": null,
-      "contacts": []
+      "contact_ids": []
     },
     {
       "email": "ndemangef@mashable.com",
@@ -167,7 +159,7 @@
       "user_id": 16,
       "image_url": null,
       "phone": null,
-      "contacts": []
+      "contact_ids": []
     },
     {
       "email": null,
@@ -175,7 +167,7 @@
       "user_id": 17,
       "image_url": "http://dummyimage.com/100x100.jpg/5fa2dd/ffffff",
       "phone": "7173981952",
-      "contacts": []
+      "contact_ids": []
     },
     {
       "user_id": 18,
@@ -183,7 +175,7 @@
       "username": "mmckeachieh",
       "image_url": null,
       "phone": null,
-      "contacts": []
+      "contact_ids": []
     },
     {
       "user_id": 19,
@@ -191,7 +183,7 @@
       "username": "arickfordi",
       "image_url": null,
       "phone": null,
-      "contacts": []
+      "contact_ids": []
     },
     {
       "user_id": 20,
@@ -199,7 +191,7 @@
       "username": "tbarrickj",
       "image_url": "http://dummyimage.com/100x100.png/dddddd/000000",
       "phone": "5205220096",
-      "contacts": []
+      "contact_ids": []
     },
     {
       "user_id": 21,
@@ -207,7 +199,7 @@
       "username": "dmonank",
       "image_url": "http://dummyimage.com/100x100.bmp/ff4444/ffffff",
       "phone": "7764178853",
-      "contacts": []
+      "contact_ids": []
     },
     {
       "user_id": 22,
@@ -215,7 +207,7 @@
       "username": "bpetruskevichl",
       "image_url": "http://dummyimage.com/100x100.jpg/ff4444/ffffff",
       "phone": "2783739996",
-      "contacts": []
+      "contact_ids": []
     },
     {
       "user_id": 23,
@@ -223,7 +215,7 @@
       "username": "asimmersm",
       "image_url": "http://dummyimage.com/100x100.bmp/5fa2dd/ffffff",
       "phone": "2278833572",
-      "contacts": []
+      "contact_ids": []
     },
     {
       "user_id": 24,
@@ -231,30 +223,15 @@
       "username": "zlanninn",
       "image_url": "http://dummyimage.com/100x100.bmp/5fa2dd/ffffff",
       "phone": "7151967601",
-      "contacts": []
+      "contact_ids": []
     },
     {
       "user_id": 25,
-      "email": null,
-      "username": "bhaythornthwaiteo",
-      "image_url": null,
-      "phone": null,
-      "contacts": []
-    },
-    {
-      "user_id": 26,
-      "email": null,
-      "username": "pboatmanp",
-      "image_url": "http://dummyimage.com/100x100.jpg/dddddd/000000",
-      "phone": "1538839520",
-      "contacts": []
-    },
-    {
-      "user_id": 27,
-      "username": "helloworld",
-      "phone": 0,
-      "contacts": [],
-      "image_url": ""
+      "email": "fbar@gmail.com",
+      "username": "bparsonsonb",
+      "phone": "3175367489",
+      "contact_ids": [],
+      "image_url": "http://www.google.com"
     }
   ]
 }
