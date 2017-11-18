@@ -12,10 +12,10 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
 	</head>
-	<div class="container">
+	<div class="container">Example Requests
 		<ul class="list-group">
 			<li class="list-group-item">
-				<span><kbd>POST</kbd> <small>https://whispering-beach-15540.herokuapp.com/users/?username=</small><mark>username</mark>
+				<span><kbd>POST</kbd> <small>https://whispering-beach-15540.herokuapp.com/users/?username=</small><mark>username</mark><small>&amp;phone=</small><mark>phonenumber</mark>
 				</span></li>
 				<li class="list-group-item">
 					<span><kbd>GET</kbd> <small>https://whispering-beach-15540.herokuapp.com/users/?username=</small><mark>username</mark></span></li>
@@ -27,6 +27,7 @@
 				</div>
 
 				<div class="container table-responsive table-sm table-bordered">
+					User Records
 					<table class="table">
 						
 							<% for (var i = 0; i < users.length; i++) { if (i < 1) {%>

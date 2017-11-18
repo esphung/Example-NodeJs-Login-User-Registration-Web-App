@@ -14,7 +14,7 @@ const db = low(adapter)
 
 
 class User {
-	constructor(user_id,username,phone,contacts,image_url) {
+	constructor(user_id, username, phone, contacts, image_url) {
 		this.user_id = user_id
 		this.username = username
 		if (phone != null && (phone.length == 10)) {
@@ -33,8 +33,8 @@ class User {
 			this.image_url = ""
 		}
 
-		console.log("Created New User Class Object")
-		console.log(this);
+		//console.log("Created New User Class Object")
+		//console.log(this);
 	}// end constructor
 
 }// end class def
@@ -49,9 +49,9 @@ User.prototype.isDuplicate = function() {
 		}// end if
 	}// end for
 	return false;
-	console.log("Hello");
+	//console.log("Hello");
 };
 
-// export class module
+// export class
 module.exports = User
 
