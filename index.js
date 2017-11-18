@@ -2,7 +2,7 @@
 * @Author: eric phung
 * @Date:   2017-11-18 10:13:07
 * @Last Modified 2017-11-18
-* @Last Modified time: 2017-11-18 13:00:14
+* @Last Modified time: 2017-11-18 13:48:46
 * @Purpose:	"entry point for web appand api and routing"
 */
 
@@ -50,13 +50,6 @@ app.get('/', function (req, res) {
 	res.render('pages/index.ejs', {})
 })
 
-// API URI CALL TO GET USER BY ID NUMBER
-app.get('/users/:user_id', function(req, res) {
-		res.send(
-			db.get('users['+req.params.user_id+']')
-  		.value())
-})
-
 // GET USER REQUEST | FIND USER BY USERNAME
 app.get('/users', function(req, res) {
 		// check for duplicate existing user record
@@ -64,20 +57,29 @@ app.get('/users', function(req, res) {
 		// create new user object
 		(db.get('users').size() + 1), 
 		req.query.username,
-		req.query.fname,
-		req.query.lname,
 		req.query.phone,
 		req.query.contacts
 	)
 
 	// check for existing record
 	if (user.isDuplicate() == true) {
-		user = db.get('users').find(req.query)
-		var wrapped = new Wrapper(true,"Found User Record",[user])
+		var user = db.get('users').find(req.query)
+
+
+		var contacts = []
+		// get all contacts from contact ids
+		for (item in user.valueOf().contacts) {
+			if (user.valueOf().contacts.hasOwnProperty(item)) {
+				contacts.push(db.get('users['+ item +']').valueOf())
+			}
+
+		}
+
+		var wrapped = new Wrapper(true,"Found User Record",user,contacts.valueOf())
 		res.send(wrapped)
 	} else {
 		// couldn't find user
-		var wrapped = new Wrapper(false,"Couldn't Find User Record",[])
+		var wrapped = new Wrapper(false,"Couldn't Find User Record")
 		res.send(wrapped)
 	}
 })
@@ -98,7 +100,7 @@ app.post('/users', function(req, res) {
 	if (user.isDuplicate() == true) {
 		// duplicate record exists
 		var user = db.get('users').find(req.query)
-		var wrapped = new Wrapper(false,"Record Already Exists",[user])
+		var wrapped = new Wrapper(false,"Record Already Exists",user)
 		res.send(wrapped)
 
 	} else {
@@ -136,11 +138,11 @@ app.delete('/users', function (req, res) {
 		.remove({
 			username: req.query.username })
 		.write()
-		var wrapped = new Wrapper(true,"Deleted Record",[])
+		var wrapped = new Wrapper(true,"Deleted Record")
 		res.send(wrapped)
 	} else {
 		// user record does not already exist
-		var wrapped = new Wrapper(true,"Record Doesnt Exist",[])
+		var wrapped = new Wrapper(false,"Record Doesnt Exist")
 		res.send(wrapped)
 	}
 
