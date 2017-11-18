@@ -1,5 +1,6 @@
 {
-  "name": "PLug Database Web App",
+  "name": "P1ug Web App",
   "description": "",
-  "repository": "https://git.heroku.com/whispering-beach-15540.git"
+  "deployment": "https://git.heroku.com/whispering-beach-15540.git",
+  "repository":"https://github.com/esphung/node.plug.api.db"
 }

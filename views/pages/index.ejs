@@ -10,48 +10,49 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
 	</head>
 	<div class="container">
 		<ul class="list-group">
 			<li class="list-group-item">
-				<span>POST <small>https://whispering-beach-15540.herokuapp.com/users/?handle=</small><mark>username</mark>
+				<span><kbd>POST</kbd> <small>https://whispering-beach-15540.herokuapp.com/users/?username=</small><mark>username</mark>
 				</span></li>
-			<li class="list-group-item">
-				<span>GET <small>https://whispering-beach-15540.herokuapp.com/users/?handle=</small><mark>username</mark></span></li>
-				
-			<li class="list-group-item">
-				<span>DELETE <small>https://whispering-beach-15540.herokuapp.com/users/?handle=</small><mark>username</mark></span></li>
+				<li class="list-group-item">
+					<span><kbd>GET</kbd> <small>https://whispering-beach-15540.herokuapp.com/users/?username=</small><mark>username</mark></span></li>
 					
-		</ul>
-	</div>
+					<li class="list-group-item">
+						<span><kbd>DELETE</kbd> <small>https://whispering-beach-15540.herokuapp.com/users/?username=</small><mark>username</mark></span></li>
+						
+					</ul>
+				</div>
+
+				<div class="container table-responsive table-sm table-bordered">
+					<table class="table">
+						
+							<% for (var i = 0; i < users.length; i++) { if (i < 1) {%>
+							<thead>
+							<tr>
+								<th class="text-center text-uppercase">user_id</th>
+								<th class="text-center text-uppercase">username</th>
+								
+								<th class="text-center text-uppercase">image</th>
+							</tr>
+							</thead>
+							<% } %>
+						
+						<tbody>
+							<tr>
+								<td class="text-center"><%= users[i].user_id %></td>
+								<td class="text-center"><%= users[i].username %></td>
+								
+								<td class="text-center"><img src='<%= users[i].image_url %>' alt='...' class='img-thumbnail'></td>
+								
+							</tr>
+							<% } %>
+						</tbody>
+					</table>
+				</div>
 
 
-<div class="container">
-	<table class="table table-sm">
-		<thead>
-
-		<% for(var i = 0; i < users.length; i++) { if (i < 1) {%>
-			<tr>	
-				<th>username</th>
-				<th>plug_id</th>
-				<th>image</th>
-			</tr>
-			<% } %>
-
-		</thead>
-		<tbody>
-			<tr>
-				<td><%= users[i].handle %></td>
-				<td><%= users[i].plug_id %></td>
-				<td><img src='<%= users[i].image_url %>' alt='...' class='img-thumbnail'></td>
 				
-			</tr>
-			<% } %>
-		</tbody>
-	</table>
-</div>
-
-			
-
-
-</html>
+			</html>

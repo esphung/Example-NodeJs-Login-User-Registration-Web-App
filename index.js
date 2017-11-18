@@ -1,8 +1,8 @@
-//https://www.youtube.com/watch?v=mdK-2ga3vqA
 /**
  * 
  * @authors eric phung (esphung@gmail.com)
  * @date    2017-11-05 00:42:23
+ * @purpose	entry point for web appand api and routing
  * @version $Id$
  */
 
@@ -10,12 +10,18 @@ var express = require('express');
 var app = express();// the main app
 var admin = express(); // the sub app
 
+
+/* temporary simple json database */
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 
 const adapter = new FileSync('db.json')
 const db = low(adapter)
 
+// custom user class
+var User = require('./user.js')
+
+// resets db.json file
 function defaults () {
 	// Set some defaults
 	console.log("Defaults reset");
@@ -23,104 +29,119 @@ function defaults () {
 	.write()
 }
 
-app.locals.title = 'Plug'
+// metadata variables
+app.locals.title = 'Plug App'
 // => 'My App'
 app.locals.email = 'esphung@gmail.com'
 // => 'me@myapp.com'
 
+// global app variables
 global.users = db.get('users').value()
 
 
-
 app.use(express.static(__dirname + '/public'));
-app.use('/admin', admin); // mount the sub app
 
 app.set('port', (process.env.PORT || 5000));
 // views is directory for all template files
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-
-// admin sub app
 app.get('/', function (req, res) {
 	defaults();
 	console.log(admin.mountpath); // /admin
-	res.render('pages/index', {
-		title: " Admin",
-		next: { link: "/db",icon:'glyphicon glyphicon-cloud',label: " Database"}
-	})
+	res.render('pages/index.ejs', {})
 })
 
-// tests
-// custom user class
-var User = require('./user')
-
-// get user by handle
-app.get('/db', function(req, res) {
-	console.log(app.users)
-	res.redirect('/');
-})
-
-// get user by handle
+// GET USER REQUEST | FIND USER BY USERNAME
 app.get('/users', function(req, res) {
-	res.send(db.get('users').find({
-		handle:req.query.handle
-	})
+		// check for duplicate existing user record
+	var user = new User(
+		// create new user object
+		(db.get('users').size() + 1), 
+		req.query.username,
+		req.query.fname,
+		req.query.lname,
+		req.query.phone,
+		req.query.contacts
 	)
+
+	// check for existing record
+	if (user.isDuplicate() == true) {
+		user = db.get('users').find(req.query)
+		res.send(user)
+		return user
+	} else {
+		// could find user
+		res.send("User couldn't be found")
+	}
 })
 
-// insert a user by handle
+// POST REQUEST | INSERT USER BY USERNAME
 app.post('/users', function(req, res) {
 	defaults()
 
-	// create new user
-	var user = new User((db.get('users').size() + 1), 
-		req.query.handle,
+	// create new user object
+	var user = new User(
+		(db.get('users').size() + 1), 
+		req.query.username,
 		req.query.fname,
-		req.query.lname
+		req.query.lname,
+		req.query.phone,
+		req.query.contacts
 		)
-	console.log(user.handle)
 
-	for (key in global.users) {
-		console.log(global.users[key].handle)
-		console.log(global.users[key].handle.localeCompare(user.handle));
+	// check for duplicate existing record
+	if (user.isDuplicate() == true) {
+		console.log("Existing Record Found");
+		res.send("User already exists")
+	} else {
+		// insert user object to db
+		db.get('users')
+		.push(user)
+		.write()
 
-		if (global.users[key].handle.localeCompare(user.handle) == 0) {
-			// zero is the difference factor between two strings
-			console.log('User already exists :(')
-			res.send("User already exists")
-			return
-		}
-	}// end for each loop
+		// return inserted results
+		res.send(
+			db.get('users.'+
+				(db.get('users')
+					.size() - (1)
+					)))
+		console.log(user)		
+	}
 	
-	// insert user to db
-	db.get('users')
-	.push(user)
-	.write()
 
-	// return inserted results
-	res.send(
-		db.get('users.'+
-			(db.get('users')
-				.size() - (1)
-				)))
-})
+})// end insert user record
 
-/*// api
-app.get('/users/:id/:handle*', function (req, res) {
-	if (db.get(('users.')+(req.params.handle)) != null)
-		res.send(db.get(('users.')+(req.params.id)))
-		//res.send(req.params)
-})*/
 
+// DELETE REQUEST | REMOVE USER RECORD BY USERNAME
 app.delete('/users', function (req, res) {
-	db.get('users')
-	.remove({
-		handle: req.query.handle })
-	.write()
-	console.log(req.query)
-	res.send('DELETE request to users succesful!');
+	
+	// check for duplicate existing user record
+	var user = new User(
+		// create new user object
+		(db.get('users').size() + 1), 
+		req.query.username,
+		req.query.fname,
+		req.query.lname,
+		req.query.phone,
+		req.query.contacts
+	)
+
+	if (user.isDuplicate() == true) {
+		// user record already exists, write to db
+		db.get('users')
+		.remove({
+			username: req.query.username })
+		.write()
+		res.send('Deleted: ' +  req.query.username)
+	} else {
+		// user record does not already exist
+		console.log("User does not exist, yet")
+		res.send("User does not exist, yet")
+	}
+
 });
+
 
 
 

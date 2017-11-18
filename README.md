@@ -1,12 +1,26 @@
 [PLUG APP DATABASE](https://whispering-beach-15540.herokuapp.com/)
 ===
 
-Unit Tests
+Plug App Devlopement Links
 ---
-`$ ./unit_tests.sh` <- ALL TESTS
+[Trello](https://trello.com/b/B4bseHbX/plug-design)
 
-`$ python3 get.py` <- GET REQUEST
+To Do List:
+---
+*	user input validation
+*	update user functionality
+*	complete user class properties
+*	logout
+*	login
+*	create user test
+*	find user test
+*	unit tests
+
+
+Development Build
+---
+`node index.js`
 
 Heroku Commands
 ---
-`$ heroku ps:scale web=1`
+`heroku ps:scale web=1`
