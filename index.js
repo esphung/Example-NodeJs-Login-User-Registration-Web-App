@@ -2,7 +2,7 @@
 * @Author: eric phung
 * @Date:   2017-11-18 10:13:07
 * @Last Modified 2017-11-18
-* @Last Modified time: 2017-11-18 15:57:50
+* @Last Modified time: 2017-11-18 16:15:54
 * @Purpose:	"entry point for web appand api and routing"
 */
 
@@ -53,9 +53,6 @@ app.get('/', function (req, res) {
 
 // GET USER REQUEST | FIND USER BY USERNAME
 app.get('/users', function(req, res) {
-
-
-	console.log(validator.isEmail(req.query.email));
 	
 	var user = new User(
 		// create new user object
@@ -69,7 +66,6 @@ app.get('/users', function(req, res) {
 	// check for existing record
 	if (user.isDuplicate() == true) {
 		var user = db.get('users').find(req.query)
-
 
 		var contacts = []
 		// get all contacts from contact ids
@@ -97,67 +93,77 @@ app.post('/users', function(req, res) {
 	var username;
 	var email;
 	var phone;
-	var image_url
+	var image_url;
 	
 	// SANITIZE VALIDATE USERNAME
-	var username_input = validator.blacklist(req.query.username, '\!\?\+\*\^\$')
-	username_input = validator.escape(username_input)
-	username_input = validator.ltrim(username_input, "\s")
-	username_input = validator.rtrim(username_input, "\s")
-	if (validator.isAlphanumeric(username_input)) {
-		// valid username
-		username = username_input
-	} else {
-		// username is not valid
-		var wrapped = new Wrapper(false,"Username Not Valid")
-		res.send(wrapped)
-		return
-	}// end validate username
+	if (req.query.username != null) {
+		var username_input = validator.blacklist(req.query.username, '\!\?\+\*\^\$')
+		username_input = validator.escape(username_input)
+		username_input = validator.ltrim(username_input, "\s")
+		username_input = validator.rtrim(username_input, "\s")
+		if (validator.isAlphanumeric(username_input)) {
+			// valid username
+			username = username_input
+		} else {
+			// username is not valid
+			var wrapped = new Wrapper(false,"Username Not Valid")
+			res.send(wrapped)
+			return
+		}// end validate username
+	}
+
 
 	// SANITIZE VALIDATE EMAIL
-	var email_input = req.query.email
-	var email_input = validator.blacklist(email_input, '\!\?\+\*\^\$')
-	email_input = validator.escape(email_input)
-	email_input = validator.ltrim(email_input, "\s")
-	email_input = validator.rtrim(email_input, "\s")
+	if (req.query.email != null) {
+		var email_input = req.query.email
+		var email_input = validator.blacklist(email_input, '\!\?\+\*\^\$')
+		email_input = validator.escape(email_input)
+		email_input = validator.ltrim(email_input, "\s")
+		email_input = validator.rtrim(email_input, "\s")
 
-	if (validator.isEmail(email_input)) {
-		// email is valid
-		email = email_input
-	} else {
-		// email not valid
-		var wrapped = new Wrapper(false,"Email Not Valid")
-		res.send(wrapped)
-		return
+		if (validator.isEmail(email_input)) {
+			// email is valid
+			email = email_input
+		} else {
+			// email not valid
+			var wrapped = new Wrapper(false,"Email Not Valid")
+			res.send(wrapped)
+			return
+		}
 	}
 
-	// SANITIZE VALIDATE PHONE (AND CONVERT TO INTEGER?)
-	var phone_input = req.query.phone
-	var email_input = validator.blacklist(phone_input, '\!\?\+\*\^\$')
-	phone_input = validator.escape(phone_input)
-	phone_input = validator.ltrim(phone_input, "\s")
-	phone_input = validator.rtrim(phone_input, "\s")
-	if (validator.isMobilePhone(phone_input, 'en-US')) {
-		// is valid phone
-		phone = phone_input
-	} else {
-		// phone not valid
-		var wrapped = new Wrapper(false,"Phone Not Valid")
-		res.send(wrapped)
-		return
+	if (req.query.phone != null) {
+		// SANITIZE VALIDATE PHONE (AND CONVERT TO INTEGER?)
+		var phone_input = req.query.phone
+		var email_input = validator.blacklist(phone_input, '\!\?\+\*\^\$')
+		phone_input = validator.escape(phone_input)
+		phone_input = validator.ltrim(phone_input, "\s")
+		phone_input = validator.rtrim(phone_input, "\s")
+		if (validator.isMobilePhone(phone_input, 'en-US')) {
+			// is valid phone
+			phone = phone_input
+		} else {
+			// phone not valid
+			var wrapped = new Wrapper(false,"Phone Not Valid")
+			res.send(wrapped)
+			return
+		}	
 	}
 
-	// VALIDATE IMAGE URL
-	if (validator.isURL(
-		validator.ltrim(
-			validator.rtrim(req.query.image_url,"\s"), "\s"))) {
-		// valid url
-		image_url = req.query.image_url
-	} else {
-		// not valid url
-		var wrapped = new Wrapper(false,"Image Url Not Valid")
-		res.send(wrapped)
-		return
+
+	if (req.query.image_url != null) {
+		// VALIDATE IMAGE URL
+		if (validator.isURL(
+			validator.ltrim(
+				validator.rtrim(req.query.image_url,"\s"), "\s"))) {
+			// valid url
+			image_url = req.query.image_url
+		} else {
+			// not valid url
+			var wrapped = new Wrapper(false,"Image Url Not Valid")
+			res.send(wrapped)
+			return
+		}
 	}
 
 	// create new user object
