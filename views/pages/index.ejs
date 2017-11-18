@@ -36,6 +36,7 @@
 								<th class="text-center text-uppercase">username</th>
 								
 								<th class="text-center text-uppercase">image</th>
+								<th class="text-center text-uppercase">contacts</th>
 							</tr>
 							</thead>
 							<% } %>
@@ -46,6 +47,8 @@
 								<td class="text-center"><%= users[i].username %></td>
 								
 								<td class="text-center"><img src='<%= users[i].image_url %>' alt='...' class='img-thumbnail'></td>
+								<td class="text-center"><%= users[i].contacts %></td>
+
 								
 							</tr>
 							<% } %>

@@ -3,8 +3,7 @@
 
 Plug App Devlopement Links
 ---
-*	[Trello](https://trello.com/b/B4bseHbX/plug-design)
-*	[Production](https://whispering-beach-15540.herokuapp.com/)
+[Trello](https://trello.com/b/B4bseHbX/plug-design)
 
 To Do List:
 ---
