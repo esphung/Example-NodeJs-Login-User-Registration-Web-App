@@ -6,7 +6,7 @@
  */
 
 /* simple json db */
-const low = require('lowdb')
+/*const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 
 const adapter = new FileSync('db.json')
@@ -53,3 +53,4 @@ User.prototype.isDuplicate = function() {
 // export class
 module.exports = User
 
+*/

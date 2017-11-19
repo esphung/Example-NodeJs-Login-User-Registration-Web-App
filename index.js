@@ -2,24 +2,42 @@
 * @Author: eric phung
 * @Date:   2017-11-18 10:13:07
 * @Last Modified 2017-11-18
-* @Last Modified time: 2017-11-18 16:15:54
+* @Last Modified time: 2017-11-18 23:06:47
 * @Purpose:	"entry point for web appand api and routing"
+* @Notes: https://www.youtube.com/watch?v=Z1ktxiqyiLA
 */
 
 var express = require('express');
-var validator = require('validator');
-var app = express();// the main app
 
-/* temporary simple json database */
+
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var exphbs = require('express-handlebars');
+var expressValidator = require('express-validator');
+var flash = require('connect-flash');
+var session = require('express-session');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
+// set up routes
+var routes = require('./routes/index');
+var users = require('./routes/users');
+
+var validator = require('validator');
+// simple json database
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 
 const adapter = new FileSync('db.json')
 const db = low(adapter)
 
+// Init
+var app = express();// the main app
+
 // custom classes
 var Wrapper = require('./wrapper.js')
-var User = require('./user.js')
+var User = require('./models/user.js')
 
 // resets db.json file
 function defaults () {
@@ -36,58 +54,118 @@ app.locals.email = 'esphung@gmail.com'
 // => 'me@myapp.com'
 
 // global app variables
-global.users = db.get('users').value()
+global.users = db.get('users')
 
+// ====================================================
 
-app.use(express.static(__dirname + '/public'));
+// View Engine
+app.set('views', path.join(__dirname,'/views'));
+app.engine('handlebars', exphbs({defaultLayout: 'layout'}));
+app.set('view engine', 'handlebars');
+//app.set('view engine', 'ejs');
 
+// BodyParser Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+
+// Set Statice Folder
+app.use(express.static(path.join(__dirname, '/public')));
+
+// Set Up Port 
 app.set('port', (process.env.PORT || 5000));
-// views is directory for all template files
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
 
+// Express Session
+app.use(session({
+    secret: 'secret',
+    saveUninitialized: true,
+    resave: true
+}));
+
+// Passport init
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Express Validator
+app.use(expressValidator({
+  errorFormatter: function(param, msg, value) {
+      var namespace = param.split('.')
+      , root    = namespace.shift()
+      , formParam = root;
+
+    while(namespace.length) {
+      formParam += '[' + namespace.shift() + ']';
+    }
+    return {
+      param : formParam,
+      msg   : msg,
+      value : value
+    };
+  }
+}));
+
+// Connect Flash
+app.use(flash());
+
+// Global Vars
+app.use(function (req, res, next) {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  res.locals.user = req.user || null;
+  next();
+});
+
+
+
+app.use('/', routes);
+app.use('/users', users);
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ====================================================
 app.get('/', function (req, res) {
 	defaults();
 	res.render('pages/index.ejs', {})
 })
 
 // GET USER REQUEST | FIND USER BY USERNAME
-app.get('/users', function(req, res) {
-	
-	var user = new User(
-		// create new user object
-		(db.get('users').size() + 1),
-		req.query.email,
-		req.query.username,
-		req.query.phone,
-		req.query.contact_ids
-	)
+app.get('/api', function(req, res) {
 
-	// check for existing record
-	if (user.isDuplicate() == true) {
-		var user = db.get('users').find(req.query)
+	console.dir(req.query);
 
+		var user = global.users.find(req.query)
 		var contacts = []
 		// get all contacts from contact ids
 		for (item in user.valueOf().contact_ids) {
 			if (user.valueOf().contact_ids.hasOwnProperty(item)) {
 				contacts.push(db.get('users['+ item +']').valueOf())
 			}
-
 		}
 
 		var wrapped = new Wrapper(true,"Found User Record",user,contacts.valueOf())
 		res.send(wrapped)
-	} else {
-		// couldn't find user
+
+/*		// couldn't find user
 		var wrapped = new Wrapper(false,"Couldn't Find User Record")
 		res.send(wrapped)
-	}
+*/
 })
 
 // POST REQUEST | INSERT USER BY USERNAME
-app.post('/users', function(req, res) {
+app.post('/api', function(req, res) {
 	defaults()
+
 
 	// default vars
 	var username;
@@ -95,7 +173,7 @@ app.post('/users', function(req, res) {
 	var phone;
 	var image_url;
 	
-	// SANITIZE VALIDATE USERNAME
+	// SANITIZE AND VALIDATE USERNAME
 	if (req.query.username != null) {
 		var username_input = validator.blacklist(req.query.username, '\!\?\+\*\^\$')
 		username_input = validator.escape(username_input)
@@ -112,8 +190,7 @@ app.post('/users', function(req, res) {
 		}// end validate username
 	}
 
-
-	// SANITIZE VALIDATE EMAIL
+	// SANITIZE AND VALIDATE EMAIL
 	if (req.query.email != null) {
 		var email_input = req.query.email
 		var email_input = validator.blacklist(email_input, '\!\?\+\*\^\$')
@@ -133,7 +210,7 @@ app.post('/users', function(req, res) {
 	}
 
 	if (req.query.phone != null) {
-		// SANITIZE VALIDATE PHONE (AND CONVERT TO INTEGER?)
+		// SANITIZE AND VALIDATE PHONE
 		var phone_input = req.query.phone
 		var email_input = validator.blacklist(phone_input, '\!\?\+\*\^\$')
 		phone_input = validator.escape(phone_input)
@@ -166,67 +243,36 @@ app.post('/users', function(req, res) {
 		}
 	}
 
+	// (user_id, email, username, password, phone, image_url)
 	// create new user object
 	var user = new User(
-		(db.get('users').size() + 3),
+		(db.get('users').size() + 1),
 		email,
 		username,
+		req.query.password,
 		phone,
-		req.query.contact_ids,
 		image_url
 	)
 
-	// check for duplicates
-	if (user.isDuplicate() == true) {
-		// duplicate record exists
-		var user = db.get('users').find(req.query)
-		var wrapped = new Wrapper(false,"Record Already Exists",user)
-		res.send(wrapped)
+	// insert user object to db
+	global.users.push(user).write()
 
-	} else {
-
-		// insert user object to db
-		db.get('users')
-		.push(user)
-		.write()
-
-		// return inserted results
-		var wrapped = new Wrapper(true,"Inserted Record",
-			[db.get('users.'+ (db.get('users').size() - (1)))])
-		res.send(wrapped)
-	}
+	// return inserted results
+	var wrapped = new Wrapper(true,"Inserted Record",
+		[db.get('users.'+ (db.get('users').size() - (1)))])
+	res.send(wrapped)
 
 })// end insert user record
 
 // DELETE REQUEST | REMOVE USER RECORD BY USERNAME
-app.delete('/users', function (req, res) {
+app.delete('/api', function (req, res) {
 	
-	// check for duplicate existing user record
-	var user = new User(
-		// create new user object
-		(db.get('users').size() + 1),
-		req.query.email,
-		req.query.username,
-		req.query.phone,
-		req.query.contact_ids
-	)
-
-	if (user.isDuplicate() == true) {
-		// user record already exists, write to db
 		db.get('users')
-		.remove({
-			username: req.query.username })
+		.remove(req.query)
 		.write()
 		var wrapped = new Wrapper(true,"Deleted Record")
 		res.send(wrapped)
 
-	} else {
-		// user record does not already exist
-		var wrapped = new Wrapper(false,"Record Doesnt Exist")
-		res.send(wrapped)
-	}
-
-	
 });
 
 app.listen(app.get('port'), function() {

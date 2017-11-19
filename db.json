@@ -14,7 +14,7 @@
     },
     {
       "email": null,
-      "username": "randreutti1",
+      "username": "randreutti12",
       "user_id": 2,
       "image_url": null,
       "phone": null,
@@ -114,124 +114,16 @@
       ]
     },
     {
-      "email": "mledwith8@indiatimes.com",
-      "username": "mledwith8",
+      "email": "admin@p1ug.com",
+      "username": "admin",
+      "password": "superword",
       "user_id": 9,
-      "image_url": "http://dummyimage.com/100x100.jpg/cc0000/ffffff",
-      "phone": "2528605176",
-      "contact_ids": []
-    },
-    {
-      "email": null,
-      "username": "rbaum9",
-      "user_id": 10,
-      "image_url": "http://dummyimage.com/100x100.bmp/cc0000/ffffff",
-      "phone": "2143749995",
-      "contact_ids": []
-    },
-    {
-      "email": null,
-      "username": "raugustusa",
-      "user_id": 11,
-      "image_url": "http://dummyimage.com/100x100.jpg/5fa2dd/ffffff",
-      "phone": "8507697349",
-      "contact_ids": []
-    },
-    {
-      "email": null,
-      "username": "wguinaned",
-      "user_id": 12,
-      "image_url": "http://dummyimage.com/100x100.bmp/dddddd/000000",
-      "phone": "2827615460",
-      "contact_ids": []
-    },
-    {
-      "email": null,
-      "username": "cbrockbanke",
-      "user_id": 15,
-      "image_url": null,
-      "phone": null,
-      "contact_ids": []
-    },
-    {
-      "email": "ndemangef@mashable.com",
-      "username": "ndemangef",
-      "user_id": 16,
-      "image_url": null,
-      "phone": null,
-      "contact_ids": []
-    },
-    {
-      "email": null,
-      "username": "ybellyg",
-      "user_id": 17,
-      "image_url": "http://dummyimage.com/100x100.jpg/5fa2dd/ffffff",
-      "phone": "7173981952",
-      "contact_ids": []
-    },
-    {
-      "user_id": 18,
-      "email": "mmckeachieh@icq.com",
-      "username": "mmckeachieh",
-      "image_url": null,
-      "phone": null,
-      "contact_ids": []
-    },
-    {
-      "user_id": 19,
-      "email": "arickfordi@1und1.de",
-      "username": "arickfordi",
-      "image_url": null,
-      "phone": null,
-      "contact_ids": []
-    },
-    {
-      "user_id": 20,
-      "email": "tbarrickj@amazon.co.uk",
-      "username": "tbarrickj",
-      "image_url": "http://dummyimage.com/100x100.png/dddddd/000000",
-      "phone": "5205220096",
-      "contact_ids": []
-    },
-    {
-      "user_id": 21,
-      "email": null,
-      "username": "dmonank",
-      "image_url": "http://dummyimage.com/100x100.bmp/ff4444/ffffff",
-      "phone": "7764178853",
-      "contact_ids": []
-    },
-    {
-      "user_id": 22,
-      "email": null,
-      "username": "bpetruskevichl",
-      "image_url": "http://dummyimage.com/100x100.jpg/ff4444/ffffff",
-      "phone": "2783739996",
-      "contact_ids": []
-    },
-    {
-      "user_id": 23,
-      "email": "asimmersm@ameblo.jp",
-      "username": "asimmersm",
-      "image_url": "http://dummyimage.com/100x100.bmp/5fa2dd/ffffff",
-      "phone": "2278833572",
-      "contact_ids": []
-    },
-    {
-      "user_id": 24,
-      "email": "zlanninn@cbslocal.com",
-      "username": "zlanninn",
-      "image_url": "http://dummyimage.com/100x100.bmp/5fa2dd/ffffff",
-      "phone": "7151967601",
-      "contact_ids": []
-    },
-    {
-      "user_id": 25,
-      "email": "fbar@gmail.com",
-      "username": "bparson",
-      "phone": "3175367489",
-      "contact_ids": [],
-      "image_url": "http://www.google.com"
+      "image_url": "http://dummyimage.com/100x100.png/cc0000/ffffff",
+      "phone": "8027499279",
+      "contact_ids": [
+        1,
+        2
+      ]
     }
   ]
 }
