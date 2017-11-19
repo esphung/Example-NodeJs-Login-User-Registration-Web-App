@@ -1,22 +1,17 @@
 /*
 * @Author: eric phung
 * @Date:   2017-11-18 18:22:10
-* @Last Modified 2017-11-18
-* @Last Modified time: 2017-11-18 19:13:20
+* @Last Modified 2017-11-19
+* @Last Modified time: 2017-11-19 01:11:51
 */
 
 var express = require('express');
 var router = express.Router();
 
 // my test page
-router.get('/', function (req, res) {
+router.get('/', ensureAuthenticated,function (req, res) {
 	res.render('index')
 })
-
-/*// Get Homepage
-router.get('/', ensureAuthenticated, function(req, res){
-	res.render('index');
-});
 
 function ensureAuthenticated(req, res, next){
 	if(req.isAuthenticated()){
@@ -27,5 +22,4 @@ function ensureAuthenticated(req, res, next){
 	}
 }
 
-*/
 module.exports = router;

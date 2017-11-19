@@ -1,14 +1,13 @@
 /*
 * @Author: eric phung
 * @Date:   2017-11-18 10:13:07
-* @Last Modified 2017-11-18
-* @Last Modified time: 2017-11-18 23:06:47
+* @Last Modified 2017-11-19
+* @Last Modified time: 2017-11-19 01:12:05
 * @Purpose:	"entry point for web appand api and routing"
 * @Notes: https://www.youtube.com/watch?v=Z1ktxiqyiLA
 */
 
 var express = require('express');
-
 
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -116,45 +115,35 @@ app.use(function (req, res, next) {
   next();
 });
 
-
-
 app.use('/', routes);
 app.use('/users', users);
 
-
-
-
-
-
-
-
-
-
-
-
-
 // ====================================================
-app.get('/', function (req, res) {
+// debug return all db records
+app.get('/db', function (req,res) {
+	res.send(global.users.valueOf())
+})
+/*app.get('/', function (req, res) {
 	defaults();
 	res.render('pages/index.ejs', {})
-})
+})*/
 
 // GET USER REQUEST | FIND USER BY USERNAME
 app.get('/api', function(req, res) {
 
-	console.dir(req.query);
+	//console.dir(req.query);
 
-		var user = global.users.find(req.query)
-		var contacts = []
-		// get all contacts from contact ids
-		for (item in user.valueOf().contact_ids) {
-			if (user.valueOf().contact_ids.hasOwnProperty(item)) {
-				contacts.push(db.get('users['+ item +']').valueOf())
-			}
+	var user = global.users.find(req.query)
+	var contacts = []
+	// get all contacts from contact ids
+	for (item in user.valueOf().contact_ids) {
+		if (user.valueOf().contact_ids.hasOwnProperty(item)) {
+			contacts.push(db.get('users['+ item +']').valueOf())
 		}
+	}
 
-		var wrapped = new Wrapper(true,"Found User Record",user,contacts.valueOf())
-		res.send(wrapped)
+	var wrapped = new Wrapper(true,"Found User Record",user,contacts.valueOf())
+	res.send(wrapped)
 
 /*		// couldn't find user
 		var wrapped = new Wrapper(false,"Couldn't Find User Record")
@@ -243,7 +232,6 @@ app.post('/api', function(req, res) {
 		}
 	}
 
-	// (user_id, email, username, password, phone, image_url)
 	// create new user object
 	var user = new User(
 		(db.get('users').size() + 1),
@@ -266,13 +254,11 @@ app.post('/api', function(req, res) {
 
 // DELETE REQUEST | REMOVE USER RECORD BY USERNAME
 app.delete('/api', function (req, res) {
-	
 		db.get('users')
 		.remove(req.query)
 		.write()
 		var wrapped = new Wrapper(true,"Deleted Record")
 		res.send(wrapped)
-
 });
 
 app.listen(app.get('port'), function() {

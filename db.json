@@ -124,6 +124,14 @@
         1,
         2
       ]
+    },
+    {
+      "user_id": 10,
+      "username": "fbar",
+      "email": "fbar@gmail.com",
+      "password": "superword1234",
+      "phone": "3179031456",
+      "contact_ids": []
     }
   ]
 }
