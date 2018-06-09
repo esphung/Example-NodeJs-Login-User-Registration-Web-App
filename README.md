@@ -1,9 +1,5 @@
-[PLUG APP DATABASE](https://whispering-beach-15540.herokuapp.com/)
+[PILL IDENTIFIER DATABASE](https://whispering-beach-15540.herokuapp.com/)
 ===
-
-Plug App Devlopement Links
----
-[Trello](https://trello.com/b/B4bseHbX/plug-design)
 
 To Do List:
 ---
