@@ -1,9 +1,11 @@
-[PILL IDENTIFIER MOBILE APP](https://whispering-beach-15540.herokuapp.com/)
-===
+# Example User Registration + Login Web App
 
-To Do List:
----
-*	unit tests
+Uses:
+- NodeJs
+- express
+- routes
+- local database (json)
+- passport
 
 
 

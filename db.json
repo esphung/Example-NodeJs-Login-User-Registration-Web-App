@@ -132,6 +132,14 @@
       "password": "superword1234",
       "phone": "3179031456",
       "contact_ids": []
+    },
+    {
+      "user_id": 11,
+      "username": "username",
+      "email": "jdoe@gmail.com",
+      "password": "password",
+      "phone": "5555555555",
+      "contact_ids": []
     }
   ]
 }

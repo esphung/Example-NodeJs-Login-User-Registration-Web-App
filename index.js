@@ -7,6 +7,8 @@
 * @Notes: https://www.youtube.com/watch?v=Z1ktxiqyiLA
 */
 
+global.appName = "Hello"
+
 var express = require('express');
 
 var path = require('path');
@@ -47,7 +49,7 @@ function defaults () {
 }
 
 // metadata variables
-app.locals.title = 'Plug App'
+app.locals.title = 'Example User Login + Registration'
 // => 'My App'
 app.locals.email = 'esphung@gmail.com'
 // => 'me@myapp.com'
